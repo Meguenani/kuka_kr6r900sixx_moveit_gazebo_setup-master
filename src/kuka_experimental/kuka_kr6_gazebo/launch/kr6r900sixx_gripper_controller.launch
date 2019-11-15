@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+	<rosparam file="$(find kuka_kr6_gazebo)/config/kr6r900sixx_gripper_controller.yaml" command="load"/>
+
+
+<!--Load controllers-->
+  <node name="spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/kuka_kr6r900sixx" args="gripper_controller"/>
+
+
+</launch>

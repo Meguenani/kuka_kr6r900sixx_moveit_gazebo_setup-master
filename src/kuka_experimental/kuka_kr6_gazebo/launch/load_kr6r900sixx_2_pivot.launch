@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find kuka_kr6_gazebo)/urdf/kuka_kr6r900sixx.xacro'" />
+  <param name="cylinder_description" command="$(find xacro)/xacro --inorder '$(find cylinder)/urdf/cylinder.urdf'" />
+  <param name="cylinder2_description" command="$(find xacro)/xacro --inorder '$(find cylinder)/urdf/cylinder2.urdf'" />
+</launch>
+
+
+

@@ -1,0 +1,15 @@
+gripper_controller:
+  type: effort_controllers/JointTrajectoryController
+  joints:
+       - Mors_prismatic1_joint
+       - Mors_prismatic2_joint
+       - Mors_prismatic3_joint
+  gains:
+    Mors_prismatic1_joint:  {p: 10.0, d: 3, i: 0.00, i_clamp: 0.0}
+    Mors_prismatic2_joint:  {p: 10.0, d: 3, i: 0.00, i_clamp: 0.0}
+    Mors_prismatic3_joint:  {p: 10.0, d: 3, i: 0.00, i_clamp: 0.0}
+
+
+
+
+

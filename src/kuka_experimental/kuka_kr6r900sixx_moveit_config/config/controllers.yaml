@@ -1,0 +1,29 @@
+#controller_list:
+#  - name: ""
+#    action_ns: joint_trajectory_action
+#    type: FollowJointTrajectory
+#    joints: [joint_a1, joint_a2, joint_a3, joint_a4, joint_a5, joint_a6, Mors_prismatic1_joint, Mors_prismatic2_joint, Mors_prismatic3_joint]
+
+controller_list:
+  - name: "joint_trajectory_action"
+    action_ns: ""
+    type: FollowJointTrajectory
+    default: true
+    joints:
+       - joint_a1
+       - joint_a2
+       - joint_a3
+       - joint_a4
+       - joint_a5
+       - joint_a6
+
+  - name: gripper_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints:
+       - Mors_prismatic1_joint
+       - Mors_prismatic2_joint
+       - Mors_prismatic3_joint
+
+

@@ -1,0 +1,571 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:macro name="default_inertial" params="mass">
+        <inertial>
+            <mass value="${mass}" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+                iyy="1.0" iyz="0.0"
+                izz="1.0" />
+        </inertial>
+    </xacro:macro>
+
+
+
+  <xacro:include filename="$(find kuka_resources)/urdf/common_constants.xacro"/>
+  <xacro:macro name="kuka_kr6r900sixx" params="prefix">
+    <link name="${prefix}base_link">
+    <xacro:default_inertial mass="1"/>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://kuka_kr6_support/meshes/kr6_agilus/visual/base_link.dae" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://kuka_kr6_support/meshes/kr6_agilus/collision/base_link.stl" />
+        </geometry>
+      </collision>
+    </link>
+
+
+
+
+
+
+    <link name="${prefix}link_1">
+    <xacro:default_inertial mass="1"/>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://kuka_kr6_support/meshes/kr6_agilus/visual/link_1.dae" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://kuka_kr6_support/meshes/kr6_agilus/collision/link_1.stl" />
+        </geometry>
+      </collision>
+    </link>
+
+
+
+
+
+
+    <link name="${prefix}link_2">
+    <xacro:default_inertial mass="1"/>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://kuka_kr6_support/meshes/kr6r900sixx/visual/link_2.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://kuka_kr6_support/meshes/kr6r900sixx/collision/link_2.stl" />
+        </geometry>
+      </collision>
+    </link>
+
+
+
+
+
+
+    <link name="${prefix}link_3">
+    <xacro:default_inertial mass="1"/>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://kuka_kr6_support/meshes/kr6_agilus/visual/link_3.dae" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://kuka_kr6_support/meshes/kr6_agilus/collision/link_3.stl" />
+        </geometry>
+      </collision>
+    </link>
+
+
+
+
+
+
+    <link name="${prefix}link_4">
+    <xacro:default_inertial mass="1"/>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://kuka_kr6_support/meshes/kr6r900sixx/visual/link_4.dae" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://kuka_kr6_support/meshes/kr6r900sixx/collision/link_4.stl" />
+        </geometry>
+      </collision>
+    </link>
+
+
+
+
+
+
+    <link name="${prefix}link_5">
+    <xacro:default_inertial mass="1"/>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://kuka_kr6_support/meshes/kr6_agilus/visual/link_5.dae" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://kuka_kr6_support/meshes/kr6_agilus/collision/link_5.stl" />
+        </geometry>
+      </collision>
+    </link>
+
+
+
+
+
+
+    <link name="${prefix}link_6">
+    <xacro:default_inertial mass="1"/>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://kuka_kr6_support/meshes/kr6_agilus/visual/link_6.dae" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://kuka_kr6_support/meshes/kr6_agilus/collision/link_6.stl" />
+        </geometry>
+      </collision>
+    </link>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- This frame corresponds to the $FLANGE coordinate system in KUKA KRC controllers. -->
+     <!-- <link name="${prefix}tool0"/> -->
+
+  <link
+    name="${prefix}tool0">
+    <inertial>
+      <origin
+        xyz="-0.00018381429775776 -1.12295880039248E-07 0.0491407595300528"
+        rpy="0 0 0" />
+      <mass
+        value="0.670577926069558" />
+      <inertia
+        ixx="0.000364869467999578"
+        ixy="-3.06546854671999E-08"
+        ixz="2.0254723799717E-06"
+        iyy="0.00036486341299996"
+        iyz="-1.06002278351788E-07"
+        izz="2.18826103188424E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Gripper2/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Gripper2/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+
+
+
+
+
+
+  <link
+    name="Mors_prismatic1_Link">
+    <inertial>
+      <origin
+        xyz="0.00925 0.0095206 0.0097917"
+        rpy="0 0 0" />
+      <mass
+        value="0.05231" />
+      <inertia
+        ixx="1.8004E-05"
+        ixy="6.4269E-20"
+        ixz="-3.3881E-21"
+        iyy="8.7579E-08"
+        iyz="8.9191E-07"
+        izz="1.7917E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Gripper2/meshes/Mors_prismatic1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Gripper2/meshes/Mors_prismatic1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+
+
+
+  <link
+    name="Mors_prismatic2_Link">
+    <inertial>
+      <origin
+        xyz="0.00925 0.0095206 0.0097917"
+        rpy="0 0 0" />
+      <mass
+        value="0.05231" />
+      <inertia
+        ixx="1.8004E-05"
+        ixy="6.9606E-20"
+        ixz="-4.6684E-21"
+        iyy="8.7579E-08"
+        iyz="8.9191E-07"
+        izz="1.7917E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Gripper2/meshes/Mors_prismatic2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Gripper2/meshes/Mors_prismatic2_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+
+
+
+
+
+  <link
+    name="Mors_prismatic3_Link">
+    <inertial>
+      <origin
+        xyz="0.00925 0.0095206 0.0097917"
+        rpy="0 0 0" />
+      <mass
+        value="0.05231" />
+      <inertia
+        ixx="1.8004E-05"
+        ixy="6.4586E-20"
+        ixz="-4.2352E-21"
+        iyy="8.7579E-08"
+        iyz="8.9191E-07"
+        izz="1.7917E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Gripper2/meshes/Mors_prismatic3_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Gripper2/meshes/Mors_prismatic3_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+
+
+
+    <!-- TJOINTS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  -->
+
+    <joint name="${prefix}joint_a1" type="revolute">
+      <origin xyz="0 0 0.400" rpy="0 0 0"/>
+      <parent link="${prefix}base_link"/>
+      <child link="${prefix}link_1"/>
+      <axis xyz="0 0 -1"/>
+      <limit effort="0" lower="${-DEG2RAD * 170}" upper="${DEG2RAD * 170}" velocity="${DEG2RAD * 360}"/>
+    </joint>
+
+
+
+
+
+
+
+    <joint name="${prefix}joint_a2" type="revolute">
+      <origin xyz="0.025 0 0" rpy="0 0 0"/>
+      <parent link="${prefix}link_1"/>
+      <child link="${prefix}link_2"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="0" lower="${-DEG2RAD * 190}" upper="${DEG2RAD * 45}" velocity="${DEG2RAD * 300}"/>
+    </joint>
+
+
+
+
+
+
+
+    <joint name="${prefix}joint_a3" type="revolute">
+      <origin xyz="0.455 0 0" rpy="0 0 0"/>
+      <parent link="${prefix}link_2"/>
+      <child link="${prefix}link_3"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="0" lower="${-DEG2RAD * 120}" upper="${DEG2RAD * 156}" velocity="${DEG2RAD * 360}"/>
+    </joint>
+
+
+
+
+
+
+
+    <joint name="${prefix}joint_a4" type="revolute">
+      <origin xyz="0 0 0.035" rpy="0 0 0"/>
+      <parent link="${prefix}link_3"/>
+      <child link="${prefix}link_4"/>
+      <axis xyz="-1 0 0"/>
+      <limit effort="0" lower="${-DEG2RAD * 185}" upper="${DEG2RAD * 185}" velocity="${DEG2RAD * 381}"/>
+    </joint>
+
+
+
+
+
+
+    <joint name="${prefix}joint_a5" type="revolute">
+      <origin xyz="0.420 0 0" rpy="0 0 0"/>
+      <parent link="${prefix}link_4"/>
+      <child link="${prefix}link_5"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="0" lower="${-DEG2RAD * 120}" upper="${DEG2RAD * 120}" velocity="${DEG2RAD * 388}"/>
+    </joint>
+
+
+
+
+
+
+
+    <joint name="${prefix}joint_a6" type="revolute">
+      <origin xyz="0.080 0 0" rpy="0 0 0"/>
+      <parent link="${prefix}link_5"/>
+      <child link="${prefix}link_6"/>
+      <axis xyz="-1 0 0"/>
+      <limit effort="0" lower="${-DEG2RAD * 350}" upper="${DEG2RAD * 350}" velocity="${DEG2RAD * 615}"/>
+    </joint>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <joint name="${prefix}joint_a6-tool0" type="floating">
+    <parent link="${prefix}link_6"/>
+    <child link="${prefix}tool0"/>
+    <origin xyz="0 0 0" rpy="0 ${DEG2RAD * 90} 0"/>
+  </joint>
+
+
+
+
+
+
+
+  <joint
+    name="Mors_prismatic1_joint"
+    type="prismatic">
+    <origin
+      xyz="0.0014158 -0.020952 0.0995"
+      rpy="1.5708 0 0.5236" />
+    <parent
+      link="${prefix}tool0" />
+    <child
+      link="Mors_prismatic1_Link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0.01"
+      effort="100"
+      velocity="10" />
+    <calibration
+      rising="0"
+      falling="0" />
+    <dynamics
+      damping="0"
+      friction="0" />
+    <safety_controller
+      soft_upper="0"
+      soft_lower="0"
+      k_position="0"
+      k_velocity="0" />
+  </joint>
+
+
+
+
+  <joint
+    name="Mors_prismatic2_joint"
+    type="prismatic">
+    <origin
+      xyz="0.017437 0.011702 0.0995"
+      rpy="1.5708 0 2.618" />
+    <parent
+      link="${prefix}tool0" />
+    <child
+      link="Mors_prismatic2_Link" />
+    <axis
+      xyz="0 0 1" />
+   <limit
+      lower="0"
+      upper="0.01"
+      effort="100"
+      velocity="10" />
+    <calibration
+      rising="0"
+      falling="0" />
+    <dynamics
+      damping="0"
+      friction="0" />
+    <safety_controller
+      soft_upper="0"
+      soft_lower="0"
+      k_position="0"
+      k_velocity="0" />
+  </joint>
+
+
+
+  <joint
+    name="Mors_prismatic3_joint"
+    type="prismatic">
+    <origin
+      xyz="-0.018853 0.00925 0.0995"
+      rpy="1.5708 0 -1.5708" />
+    <parent
+      link="${prefix}tool0" />
+    <child
+      link="Mors_prismatic3_Link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0.01"
+      effort="100"
+      velocity="10" />
+    <calibration
+      rising="0"
+      falling="0" />
+    <dynamics
+      damping="0"
+      friction="0" />
+    <safety_controller
+      soft_upper="0"
+      soft_lower="0"
+      k_position="0"
+      k_velocity="0" />
+  </joint>
+
+
+
+    <!-- ROS base_link to KUKA $ROBROOT coordinate system transform -->
+    <link name="${prefix}base" />
+    <joint name="${prefix}base_link-base" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <parent link="${prefix}base_link"/>
+      <child link="${prefix}base"/>
+    </joint>
+  </xacro:macro>
+</robot>

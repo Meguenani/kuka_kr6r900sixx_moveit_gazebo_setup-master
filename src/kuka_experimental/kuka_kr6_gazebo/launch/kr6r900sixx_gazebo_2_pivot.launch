@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<launch>
+	<arg name="paused" default="false"/>
+
+  <!-- remap topics to conform to ROS-I specifications -->
+  <remap from="/arm_controller/follow_joint_trajectory" to="/joint_trajectory_action" />
+  <remap from="/arm_controller/state" to="/feedback_states" />
+  <remap from="/arm_controller/command" to="/joint_path_command"/>
+
+  <!-- startup simulated world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find kuka_kr6_gazebo)/worlds/empty.world"/>
+    <arg name="gui" value="true"/>
+    <arg name="paused" value="true"/>
+  </include>
+
+  <!-- urdf xml robot description loaded on the Parameter Server, converting the xacro into a proper urdf file-->
+  <include file="$(find kuka_kr6_gazebo)/launch/load_kr6r900sixx_2_pivot.launch" />
+
+  <!-- push robot_description to factory and spawn robot in gazebo -->
+  <!-- <node name="kuka_kr6r900sixx_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description -model kuka_kr6r900sixx" />-->
+
+  <!-- For when the real cylinder part is used
+  <node name="kuka_kr6r900sixx_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description -model kuka_kr6r900sixx -J joint_a1 0.0 -J joint_a2 -0.8915 -J joint_a3 1.4187   -J joint_a4 -0.0535   -J joint_a5 1.2381   -J joint_a6 0.0 -unpause" />
+  <node name="cylinder_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param cylinder_description -model cylinder -x 0.65 -y 0 -z 0.01" /> -->
+
+
+
+
+
+
+
+
+  <!-- For when the pivot part is used -->
+  <!-- <node name="kuka_kr6r900sixx_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description -model kuka_kr6r900sixx -J joint_a1 0.0 -J joint_a2 -1.24 -J joint_a3 1.29   -J joint_a4 -0.06   -J joint_a5 1.42   -J joint_a6 0.0 -unpause" /> -->
+  <node name="kuka_kr6r900sixx_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description -model kuka_kr6r900sixx -J joint_a1 -0.00021736421685910487 -J joint_a2 -0.766924292311668 -J joint_a3 0.2746081020018357   0.008176110828693762   -J joint_a5 2.078360552493859   -J joint_a6 0.0 -unpause" />
+
+  <node name="cylinder_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param cylinder_description -model cylinder -x 0.70 -y 0 -z 0.70 -R 3.14159265359 -P 0 -Y -1.570796327" />
+
+  <node name="cylinder_spawn2" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param cylinder2_description -model cylinder2 -x 0.7 -y 0.23 -z 0.70 -R 3.14159265359 -P 0 -Y 1.570796327" />
+
+  <!-- Pose of the second art before tete beche -->
+  <!-- <node name="cylinder_spawn2" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param cylinder2_description -model cylinder2 -x 0.70 -y 0.4 -z 0.70 -R 3.14159265359 -P 0 -Y 0" /> -->
+
+  <!-- <node pkg="tf" type="static_transform_publisher" name="link1_broadcaster" args="0.65 0 0.4 0 0 3.14159265359 base_link cylinder_link 100" />-->
+
+
+
+
+
+
+  <!-- convert joint states to TF transforms for rviz, etc -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+  output="screen">
+  </node>
+
+
+  <!-- init and start Gazebo ros_control interface -->
+  <include file="$(find kuka_kr6_gazebo)/launch/kr6r900sixx_control.launch"/> 
+
+
+</launch>

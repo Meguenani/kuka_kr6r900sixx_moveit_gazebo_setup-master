@@ -1,0 +1,38 @@
+digraph G {
+node [shape=box];
+"base_link" [label="base_link"];
+"base" [label="base"];
+"link_1" [label="link_1"];
+"link_2" [label="link_2"];
+"link_3" [label="link_3"];
+"link_4" [label="link_4"];
+"link_5" [label="link_5"];
+"link_6" [label="link_6"];
+"tool_link" [label="tool_link"];
+"Mors_prismatic1_Link" [label="Mors_prismatic1_Link"];
+"Mors_prismatic2_Link" [label="Mors_prismatic2_Link"];
+"Mors_prismatic3_Link" [label="Mors_prismatic3_Link"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"base_link" -> "base_link-base" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"base_link-base" -> "base"
+"base_link" -> "joint_a1" [label="xyz: 0 0 0.4 \nrpy: 0 -0 0"]
+"joint_a1" -> "link_1"
+"link_1" -> "joint_a2" [label="xyz: 0.025 0 0 \nrpy: 0 -0 0"]
+"joint_a2" -> "link_2"
+"link_2" -> "joint_a3" [label="xyz: 0.455 0 0 \nrpy: 0 -0 0"]
+"joint_a3" -> "link_3"
+"link_3" -> "joint_a4" [label="xyz: 0 0 0.035 \nrpy: 0 -0 0"]
+"joint_a4" -> "link_4"
+"link_4" -> "joint_a5" [label="xyz: 0.42 0 0 \nrpy: 0 -0 0"]
+"joint_a5" -> "link_5"
+"link_5" -> "joint_a6" [label="xyz: 0.08 0 0 \nrpy: 0 -0 0"]
+"joint_a6" -> "link_6"
+"link_6" -> "joint_a6-tool_link" [label="xyz: 0 0 0 \nrpy: 0 1.5708 -0"]
+"joint_a6-tool_link" -> "tool_link"
+"tool_link" -> "Mors_prismatic1_joint" [label="xyz: 0.0014158 -0.020952 0.0995 \nrpy: 1.5708 5.55112e-17 0.5236"]
+"Mors_prismatic1_joint" -> "Mors_prismatic1_Link"
+"tool_link" -> "Mors_prismatic2_joint" [label="xyz: 0.017437 0.011702 0.0995 \nrpy: 1.5708 2.77556e-17 2.618"]
+"Mors_prismatic2_joint" -> "Mors_prismatic2_Link"
+"tool_link" -> "Mors_prismatic3_joint" [label="xyz: -0.018853 0.00925 0.0995 \nrpy: 1.5708 -0 -1.5708"]
+"Mors_prismatic3_joint" -> "Mors_prismatic3_Link"
+}

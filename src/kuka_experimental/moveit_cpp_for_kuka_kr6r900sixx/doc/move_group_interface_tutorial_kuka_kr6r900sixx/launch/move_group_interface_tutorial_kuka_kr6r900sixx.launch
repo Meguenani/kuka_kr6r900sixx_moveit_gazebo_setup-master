@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- By default, we are not in debug mode -->
+  <arg name="debug" default="false" />
+
+
+
+  <node name="move_group_interface_tutorial_kuka_kr6r900sixx" pkg="move_group_interface_tutorial_kuka_kr6r900sixx" type="move_group_interface_tutorial_kuka_kr6r900sixx" respawn="false" launch-prefix="$(arg launch_prefix)" output="screen">
+  </node>
+
+</launch>

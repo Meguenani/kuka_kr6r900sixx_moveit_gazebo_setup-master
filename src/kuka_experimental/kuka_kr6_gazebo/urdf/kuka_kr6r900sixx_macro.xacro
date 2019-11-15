@@ -1,0 +1,291 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+<xacro:include filename="$(find kuka_kr6_support)/urdf/kr6r900sixx_macro.xacro"/>
+<xacro:macro name="kuka_kr6r900sixx_gazebo" params="prefix">
+
+
+  <!-- Constants -->
+  <property name="deg_to_rad" value="0.01745329251994329577"/>
+  <property name="M_PI" value="3.14159"/>
+
+
+
+  <!-- get base kuka kr6r900sixx model -->
+  <xacro:kuka_kr6r900sixx prefix="${prefix}" />
+
+  <!-- transmission list -->
+  <transmission name="${prefix}tran1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="${prefix}joint_a1">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="${prefix}motor1">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+  <transmission name="${prefix}tran2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="${prefix}joint_a2">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="${prefix}motor2">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+  <transmission name="${prefix}tran3">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="${prefix}joint_a3">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="${prefix}motor3">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+  <transmission name="${prefix}tran4">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="${prefix}joint_a4">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="${prefix}motor4">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+  <transmission name="${prefix}tran5">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="${prefix}joint_a5">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="${prefix}motor5">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+  <transmission name="${prefix}tran6">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="${prefix}joint_a6">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="${prefix}motor6">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+  <transmission name="${prefix}tran7">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="Mors_prismatic1_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="${prefix}motor7">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+  <transmission name="${prefix}tran8">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="Mors_prismatic2_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="${prefix}motor8">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+
+
+  <transmission name="${prefix}tran9">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="Mors_prismatic3_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="${prefix}motor9">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+
+  <!-- end of transmission list -->
+
+  <!-- Gazebo-specific link properties -->
+  <gazebo reference="${prefix}base_link">
+    <material>Gazebo/Orange</material>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+
+
+  <gazebo reference="${prefix}link_1">
+    <material>Gazebo/Orange</material>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+
+
+  <gazebo reference="${prefix}link_2">
+    <material>Gazebo/Orange</material>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>  
+
+
+  <gazebo reference="${prefix}link_3">
+    <material>Gazebo/Orange</material>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+
+
+  <gazebo reference="${prefix}link_4">
+    <material>Gazebo/Orange</material>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+
+
+  <gazebo reference="${prefix}link_5">
+    <material>Gazebo/Orange</material>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+
+
+  <gazebo reference="${prefix}link_6">
+    <material>Gazebo/Black</material>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+
+
+
+
+  <gazebo reference="tool0">
+    <material>Gazebo/Green</material>
+    <turnGravityOff>true</turnGravityOff>
+
+  </gazebo>
+
+
+
+
+
+
+  <gazebo reference="Mors_prismatic1_Link">
+    <material>Gazebo/Blue</material>
+    <turnGravityOff>true</turnGravityOff>
+
+    <implicitSpringDamper>1</implicitSpringDamper>
+    <kp>5.0</kp>
+    <kd>1.0</kd>
+    <mu1>10</mu1>
+    <mu2>10</mu2>
+
+    <minDepth>0.005</minDepth>
+
+  </gazebo>
+
+
+
+  <gazebo reference="Mors_prismatic2_Link">
+    <material>Gazebo/Blue</material>
+    <turnGravityOff>true</turnGravityOff>
+
+    <implicitSpringDamper>1</implicitSpringDamper>
+    <kp>5.0</kp>
+    <kd>1.0</kd>
+    <mu1>10</mu1>
+    <mu2>10</mu2>
+
+    <minDepth>0.005</minDepth>
+
+  </gazebo>
+
+
+
+  <gazebo reference="Mors_prismatic3_Link">
+    <material>Gazebo/Blue</material>
+    <turnGravityOff>true</turnGravityOff>
+
+    <implicitSpringDamper>1</implicitSpringDamper>
+    <kp>5.0</kp>
+    <kd>1.0</kd>
+    <mu1>10</mu1>
+    <mu2>10</mu2>
+
+    <minDepth>0.005</minDepth>
+
+  </gazebo>
+
+
+
+
+
+
+
+
+  <!-- Here we pu thet Xtion sensor -->
+  <xacro:include filename="$(find mastering_ros_robot_description_pkg)/urdf/sensors/xtion_pro_live.urdf.xacro"/>
+
+  <!-- Define RGB-D sensor -->
+  <xacro:xtion_pro_live name="rgbd_camera" parent="base">
+    <!-- <origin xyz="2 0 0.5" rpy="${180.0 * deg_to_rad} ${180.0 * deg_to_rad} 0"/> -->
+    <origin xyz="0.2 1.5 0.5" rpy="${180.0 * deg_to_rad} ${180.0 * deg_to_rad} ${90.0 * deg_to_rad}"/>
+    <origin xyz="0 0 0" rpy="${-90.0 * deg_to_rad} 0 ${-90.0 * deg_to_rad}"/>
+  </xacro:xtion_pro_live>
+
+
+
+
+
+
+
+
+
+
+<gazebo>
+   <plugin name="gazebo_grasp_fix" filename="libgazebo_grasp_fix.so">
+        <arm>
+           <arm_name>manipulator</arm_name>
+           <palm_link> link_6  </palm_link>
+           <gripper_link> Mors_prismatic1_Link </gripper_link>
+           <gripper_link> Mors_prismatic2_Link </gripper_link>
+           <gripper_link> Mors_prismatic3_Link </gripper_link>
+        </arm>
+       <forces_angle_tolerance>100</forces_angle_tolerance>
+       <update_rate>4</update_rate>
+       <grip_count_threshold>4</grip_count_threshold>
+       <max_grip_count>8</max_grip_count>
+       <release_tolerance>0.004</release_tolerance>     <!-- PEUT ETRE 0.0035 -->
+       <disable_collisions_on_attach>false</disable_collisions_on_attach>
+       <contact_topic>__default_topic__</contact_topic>
+    </plugin>
+</gazebo>
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- ros_control plugin -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+    </plugin>
+  </gazebo>  
+
+
+
+
+  </xacro:macro>
+</robot>

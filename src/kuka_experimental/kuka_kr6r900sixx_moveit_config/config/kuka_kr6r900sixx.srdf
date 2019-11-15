@@ -1,0 +1,558 @@
+<?xml version="1.0" ?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot name="kuka_kr6r900sixx">
+    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining manipulators, end effectors, etc-->
+    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
+    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
+    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
+    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="manipulator">
+        <joint name="joint_a1" />
+        <joint name="joint_a2" />
+        <joint name="joint_a3" />
+        <joint name="joint_a4" />
+        <joint name="joint_a5" />
+        <joint name="joint_a6" />
+        <chain base_link="base_link" tip_link="tool0" />
+    </group>
+    <group name="gripper">
+        <joint name="Mors_prismatic1_joint" />
+        <joint name="Mors_prismatic2_joint" />
+        <joint name="Mors_prismatic3_joint" />
+        <chain base_link="Mors_prismatic1_Link" tip_link="Mors_prismatic3_Link" />
+    </group>
+
+
+
+    <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded manipulators'-->
+    <group_state name="home_pose" group="manipulator">
+        <joint name="joint_a1" value="0.00" />
+        <joint name="joint_a2" value="-1.24" />
+        <joint name="joint_a3" value="1.29" />
+        <joint name="joint_a4" value="-0.06" />
+        <joint name="joint_a5" value="1.42" />
+        <joint name="joint_a6" value="0" />
+    </group_state>
+
+
+
+<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!For scanning the first face !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+    <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded manipulators'-->
+    <group_state name="pre_pick_pose" group="manipulator">
+        <joint name="joint_a1" value="0.0018356838238666497" />
+        <joint name="joint_a2" value="-0.7854113234718336" />
+        <joint name="joint_a3" value="0.3116725966249585" />
+        <joint name="joint_a4" value="0.007997814302908916" />
+        <joint name="joint_a5" value="2.0597642075299145" />
+        <joint name="joint_a6" value="0.00208296238331547" />
+    </group_state>
+
+
+
+
+    <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded manipulators'-->
+    <group_state name="pick_pose" group="manipulator">
+        <joint name="joint_a1" value="0.0022530338863289145" />
+        <joint name="joint_a2" value="-0.8910944424302496"  />
+        <joint name="joint_a3" value="0.6043352526594488"     />
+        <joint name="joint_a4" value="0.007369207330854444"  />
+        <joint name="joint_a5" value="1.872861285685878"    />
+        <joint name="joint_a6" value="0.0007556318485075764"  />
+    </group_state>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded manipulators'-->
+    <group_state name="cloud_acq_pose1_face_1" group="manipulator">
+        <joint name="joint_a1" value="-1.0537427118856435" />
+        <joint name="joint_a2" value="-1.1844414270948844"  />
+        <joint name="joint_a3" value="1.9478911311498717 "     />
+        <joint name="joint_a4" value="-2.3803191571185405"  />
+        <joint name="joint_a5" value="0.7417513532192253 "    />
+        <joint name="joint_a6" value="1.1516509838742062 "  />
+    </group_state>
+
+
+
+
+
+
+
+    <!--Coté bas cylindre-->
+    <group_state name="cloud_acq_pose2_face_1" group="manipulator">
+        <joint name="joint_a1" value="-1.0763241345672583" />
+        <joint name="joint_a2" value="-1.1569042026830676"  />
+        <joint name="joint_a3" value="1.7007987419052766"     />
+        <joint name="joint_a4" value="-1.5441640205993679"  />
+        <joint name="joint_a5" value="0.3673101805340515"    />
+        <joint name="joint_a6" value="0.31474764109137876"  />
+    </group_state>
+
+
+
+    <!--Coté droit cylindre-->
+    <group_state name="cloud_acq_pose3_face_1" group="manipulator">
+        <joint name="joint_a1" value="-0.955971387055687" />
+        <joint name="joint_a2" value="-1.0059982975406596"  />
+        <joint name="joint_a3" value="1.5790727852502693"     />
+        <joint name="joint_a4" value="-1.4794121809224157"  />
+        <joint name="joint_a5" value="1.346675413364804"    />
+        <joint name="joint_a6" value="0.48799927763098694"  />
+    </group_state>
+   
+
+
+
+    <!--Coté haut cylindre-->
+    <group_state name="cloud_acq_pose4_face_1" group="manipulator">
+        <joint name="joint_a1" value="-1.0205620548015126" />
+        <joint name="joint_a2" value="-0.9254147019065897"  />
+        <joint name="joint_a3" value="1.8796165103394635"     />
+        <joint name="joint_a4" value="-2.61291522174733"  />
+        <joint name="joint_a5" value="1.501586242260296"    />
+        <joint name="joint_a6" value="1.3606543122480659"  />
+    </group_state>
+
+
+
+
+    <!--Coté gauche cylindre-->
+    <group_state name="cloud_acq_pose5_face_1" group="manipulator">
+        <joint name="joint_a1" value="-1.2804894831326603" />
+        <joint name="joint_a2" value="-1.3271490002078945"  />
+        <joint name="joint_a3" value="2.126722453222442"     />
+        <joint name="joint_a4" value="2.7987984984782006"  />
+        <joint name="joint_a5" value="0.7257116973750577"    />
+        <joint name="joint_a6" value="-4.292270951983985"  />
+    </group_state>
+
+
+
+
+    <!--SIDE1 FACE1-->
+    <group_state name="cloud_acq_pose6_face_1" group="manipulator">
+        <joint name="joint_a1" value="-1.012718024228107" />
+        <joint name="joint_a2" value="-0.9319852744254549"  />
+        <joint name="joint_a3" value="1.4648395128532217"     />
+        <joint name="joint_a4" value="-1.352259726402366"  />
+        <joint name="joint_a5" value="1.6233257154248877"    />
+        <joint name="joint_a6" value="0.4463905050697452"  />
+    </group_state>
+
+
+    <!--SIDE2 FACE1-->
+    <group_state name="cloud_acq_pose7_face_1" group="manipulator">
+        <joint name="joint_a1" value="-1.012557819741697" />
+        <joint name="joint_a2" value="-0.9318399250663187"  />
+        <joint name="joint_a3" value="1.4648908853321467"     />
+        <joint name="joint_a4" value="1.6233875030267706"  />
+        <joint name="joint_a5" value="1.6233875030267706"    />
+        <joint name="joint_a6" value="-1.2728676389555655"  />
+    </group_state>
+
+
+
+
+    <!--SIDE3 FACE1-->
+    <group_state name="cloud_acq_pose8_face_1" group="manipulator">
+        <joint name="joint_a1" value="-1.0127059290513385" />
+        <joint name="joint_a2" value="-0.9319664491987201"  />
+        <joint name="joint_a3" value="1.4649397628464715"     />
+        <joint name="joint_a4" value="-1.3521628024028027"  />
+        <joint name="joint_a5" value="1.623419563625621"    />
+        <joint name="joint_a6" value="-2.930469823456744"  />
+    </group_state>
+
+
+    <!--SIDE4 FACE1-->
+    <group_state name="cloud_acq_pose9_face_1" group="manipulator">
+        <joint name="joint_a1" value="-1.012655837499353" />
+        <joint name="joint_a2" value="-0.9318733296970851"  />
+        <joint name="joint_a3" value="1.4649171705935151"     />
+        <joint name="joint_a4" value="-1.3522242475159212"  />
+        <joint name="joint_a5" value="1.6233266165005569"    />
+        <joint name="joint_a6" value="-4.606591939112901"  />
+    </group_state>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!For scanning the second face !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+    <group_state name="pre_pick_2_pose_0" group="manipulator">
+        <joint name="joint_a1" value="-0.006106282495213294" />
+        <joint name="joint_a2" value="-1.888382903855877 "  />
+        <joint name="joint_a3" value="1.6847445113795887 "     />
+        <joint name="joint_a4" value="0.0072860521523781 "  />
+        <joint name="joint_a5" value="1.7897227259312416 "    />
+        <joint name="joint_a6" value="-0.008209711614347833"  />
+    </group_state>
+
+
+
+
+
+
+    <group_state name="pre_pick_2_pose_1" group="manipulator">
+        <joint name="joint_a1" value="0.5630155060470354" />
+        <joint name="joint_a2" value="0.7083241241057827"  />
+        <joint name="joint_a3" value="-1.0863107701287946"     />
+        <joint name="joint_a4" value="-3.142830699808303"  />
+        <joint name="joint_a5" value="1.2275005479338637"    />
+        <joint name="joint_a6" value="2.5359275970833846"  />
+    </group_state>
+
+
+
+
+
+
+    <group_state name="pre_pick_2_pose_2" group="manipulator">
+        <joint name="joint_a1" value="0.14660955459756853" />
+        <joint name="joint_a2" value="0.366368207092572"  />
+        <joint name="joint_a3" value="-0.5616001643267072"     />
+        <joint name="joint_a4" value="0.0010122285603664238"  />
+        <joint name="joint_a5" value="-1.356253568731658"    />
+        <joint name="joint_a6" value="-0.17889970651317633"  />
+    </group_state>
+
+
+
+
+
+    <group_state name="pre_pick_2_pose_3" group="manipulator">
+        <joint name="joint_a1" value="0.010614249749755444" />
+        <joint name="joint_a2" value="0.6910679921322354"  />
+        <joint name="joint_a3" value="-1.313852047519883"     />
+        <joint name="joint_a4" value="0.018615369489882738"  />
+        <joint name="joint_a5" value="-0.9165447363743615"    />
+        <joint name="joint_a6" value="-0.06128216532934694"  />
+    </group_state>
+
+
+
+
+
+    <group_state name="pick_2_pose" group="manipulator">
+        <joint name="joint_a1" value="0.009810869529600585" />
+        <joint name="joint_a2" value="0.6318633312273384"  />
+        <joint name="joint_a3" value="-1.3090191439521472"     />
+        <joint name="joint_a4" value="0.019497305370088272"  />
+        <joint name="joint_a5" value="-0.8621483949256318"    />
+        <joint name="joint_a6" value="-0.061693584638740716"  />
+    </group_state>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded manipulators'-->
+    <group_state name="cloud_acq_pose1_face_2" group="manipulator">
+        <joint name="joint_a1" value="-1.1732633203399985" />
+        <joint name="joint_a2" value="-1.0744279921255941"  />
+        <joint name="joint_a3" value="1.7318315466566823"     />
+        <joint name="joint_a4" value="-2.3155920822920297"  />
+        <joint name="joint_a5" value="0.6568708390217175"    />
+        <joint name="joint_a6" value="1.0506078835016437"  />
+    </group_state>
+
+
+
+    <!--Coté bas cylindre-->
+    <group_state name="cloud_acq_pose2_face_2" group="manipulator">
+        <joint name="joint_a1" value="-1.1878750548085417" />
+        <joint name="joint_a2" value="-1.1008805082317306 "  />
+        <joint name="joint_a3" value="1.670720980773429"     />
+        <joint name="joint_a4" value="-1.6187249942314121"  />
+        <joint name="joint_a5" value="0.35767366220698804"    />
+        <joint name="joint_a6" value="0.38772262903497623"  />
+    </group_state>
+
+
+
+    <!--Coté droit cylindre-->
+    <group_state name="cloud_acq_pose3_face_2" group="manipulator">
+        <joint name="joint_a1" value="-1.1164714009834888" />
+        <joint name="joint_a2" value="-0.9903616375877089"  />
+        <joint name="joint_a3" value="1.5573625075807733"     />
+        <joint name="joint_a4" value="-1.50964731684215"  />
+        <joint name="joint_a5" value="1.2962998740055678"    />
+        <joint name="joint_a6" value="0.47761370586612095"  />
+    </group_state>
+   
+
+
+    <!--Coté haut cylindre-->
+    <group_state name="cloud_acq_pose4_face_2" group="manipulator">
+        <joint name="joint_a1" value="-1.1381320240458717" />
+        <joint name="joint_a2" value="-0.888610099354457"  />
+        <joint name="joint_a3" value="1.8263845851445168"     />
+        <joint name="joint_a4" value="-2.627047975186928"  />
+        <joint name="joint_a5" value="1.4824006556759022"    />
+        <joint name="joint_a6" value="1.3613430716112553"  />
+    </group_state>
+
+
+
+
+    <!--Coté gauche cylindre-->
+    <group_state name="cloud_acq_pose5_face_2" group="manipulator">
+        <joint name="joint_a1" value="-1.296875074587378" />
+        <joint name="joint_a2" value="-1.1052667406576049"  />
+        <joint name="joint_a3" value="1.8259303671645366"     />
+        <joint name="joint_a4" value="2.9001044043776947"  />
+        <joint name="joint_a5" value="0.6327933525074609"    />
+        <joint name="joint_a6" value="-4.348427860825678"  />
+    </group_state>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!For scanning 2 parts at the same time !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!For scanning FACE 1 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+    <!-- Pose 1 face 1 when scanning 2 parts at he same time-->
+    <group_state name="cloud_acq_pose1_face_1_2" group="manipulator">
+        <joint name="joint_a1" value="-0.9513201253979302" />
+        <joint name="joint_a2" value="-1.1485550264459192"  />
+        <joint name="joint_a3" value="1.818748983835107 "     />
+        <joint name="joint_a4" value="-2.180346128866618"  />
+        <joint name="joint_a5" value="0.7395013626076388 "    />
+        <joint name="joint_a6" value="2.85227355353147 "  />
+    </group_state>
+
+
+
+
+<group_state name="cloud_acq_pose2_face_1_2" group="manipulator">
+<joint name="joint_a1" value="-0.987937" />
+<joint name="joint_a2" value="-1.2037" />
+<joint name="joint_a3" value="1.7955" />
+<joint name="joint_a4" value="-1.8756" />
+<joint name="joint_a5" value="0.404509" />
+<joint name="joint_a6" value="2.54383" />
+</group_state>
+
+
+
+<group_state name="cloud_acq_pose3_face_1_2" group="manipulator">
+<joint name="joint_a1" value="-0.875788" />
+<joint name="joint_a2" value="-0.832182" />
+<joint name="joint_a3" value="1.19294" />
+<joint name="joint_a4" value="-1.27948" />
+<joint name="joint_a5" value="1.23702" />
+<joint name="joint_a6" value="2.07446" />
+</group_state>
+
+
+<group_state name="cloud_acq_pose4_face_1_2" group="manipulator">
+<joint name="joint_a1" value="-0.910988" />
+<joint name="joint_a2" value="-0.92762" />
+<joint name="joint_a3" value="1.89175" />
+<joint name="joint_a4" value="-2.53477" />
+<joint name="joint_a5" value="1.36279" />
+<joint name="joint_a6" value="2.92724" />
+</group_state>
+
+
+<group_state name="cloud_acq_pose5_face_1_2" group="manipulator">
+<joint name="joint_a1" value="-1.17177" />
+<joint name="joint_a2" value="-0.998496" />
+<joint name="joint_a3" value="2.02823" />
+<joint name="joint_a4" value="-0.0544491" />
+<joint name="joint_a5" value="-1.35019" />
+<joint name="joint_a6" value="0.0340037" />
+</group_state>
+
+
+<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!For scanning FACE 1 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+<group_state name="cloud_acq_pose1_face_2_2" group="manipulator">
+<joint name="joint_a1" value="-0.94671" />
+<joint name="joint_a2" value="-1.13232" />
+<joint name="joint_a3" value="1.83499" />
+<joint name="joint_a4" value="-2.20367" />
+<joint name="joint_a5" value="0.760943" />
+<joint name="joint_a6" value="2.76869" />
+</group_state>
+
+
+
+<group_state name="cloud_acq_pose2_face_2_2" group="manipulator">
+<joint name="joint_a1" value="-0.987884" />
+<joint name="joint_a2" value="-1.20364" />
+<joint name="joint_a3" value="1.79543" />
+<joint name="joint_a4" value="-1.87567" />
+<joint name="joint_a5" value="0.404605" />
+<joint name="joint_a6" value="2.54382" />
+</group_state>
+
+
+
+
+
+<group_state name="cloud_acq_pose3_face_2_2" group="manipulator">
+<joint name="joint_a1" value="-0.893138" />
+<joint name="joint_a2" value="-0.821372" />
+<joint name="joint_a3" value="1.18678" />
+<joint name="joint_a4" value="-1.28555" />
+<joint name="joint_a5" value="1.22014" />
+<joint name="joint_a6" value="2.07421" />
+</group_state>
+
+
+
+
+
+
+<group_state name="cloud_acq_pose4_face_2_2" group="manipulator">
+<joint name="joint_a1" value="-0.910955" />
+<joint name="joint_a2" value="-0.927591" />
+<joint name="joint_a3" value="1.89178" />
+<joint name="joint_a4" value="-2.53477" />
+<joint name="joint_a5" value="1.36276" />
+<joint name="joint_a6" value="2.92721" />
+</group_state>
+
+
+
+
+
+
+
+
+<group_state name="cloud_acq_pose5_face_2_2" group="manipulator">
+<joint name="joint_a1" value="-1.1717" />
+<joint name="joint_a2" value="-0.998592" />
+<joint name="joint_a3" value="2.02822" />
+<joint name="joint_a4" value="-0.0544747" />
+<joint name="joint_a5" value="-1.35009" />
+<joint name="joint_a6" value="0.0341025" />
+</group_state>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded manipulators'-->
+    <group_state name="open_gripper" group="gripper">
+        <joint name="Mors_prismatic1_joint" value="0.01" />
+        <joint name="Mors_prismatic2_joint" value="0.01" />
+        <joint name="Mors_prismatic3_joint" value="0.01" />
+    </group_state>
+
+
+    <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded manipulators'-->
+    <group_state name="close_gripper" group="gripper">
+        <joint name="Mors_prismatic1_joint" value="-0.004" />
+        <joint name="Mors_prismatic2_joint" value="-0.004" />
+        <joint name="Mors_prismatic3_joint" value="-0.004" />
+    </group_state>
+
+
+
+
+    <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
+    <end_effector name="robot_eef" parent_link="tool0" group="gripper" parent_group="manipulator" />
+    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="Mors_prismatic1_Link" link2="Mors_prismatic2_Link" reason="Never" />
+    <disable_collisions link1="Mors_prismatic1_Link" link2="Mors_prismatic3_Link" reason="Never" />
+    <disable_collisions link1="Mors_prismatic1_Link" link2="link_3" reason="Never" />
+    <disable_collisions link1="Mors_prismatic1_Link" link2="link_4" reason="Never" />
+    <disable_collisions link1="Mors_prismatic1_Link" link2="link_5" reason="Never" />
+    <disable_collisions link1="Mors_prismatic1_Link" link2="link_6" reason="Never" />
+    <disable_collisions link1="Mors_prismatic1_Link" link2="tool0" reason="Adjacent" />
+    <disable_collisions link1="Mors_prismatic2_Link" link2="Mors_prismatic3_Link" reason="Never" />
+    <disable_collisions link1="Mors_prismatic2_Link" link2="link_3" reason="Never" />
+    <disable_collisions link1="Mors_prismatic2_Link" link2="link_4" reason="Never" />
+    <disable_collisions link1="Mors_prismatic2_Link" link2="link_5" reason="Never" />
+    <disable_collisions link1="Mors_prismatic2_Link" link2="link_6" reason="Never" />
+    <disable_collisions link1="Mors_prismatic2_Link" link2="tool0" reason="Adjacent" />
+    <disable_collisions link1="Mors_prismatic3_Link" link2="link_3" reason="Never" />
+    <disable_collisions link1="Mors_prismatic3_Link" link2="link_4" reason="Never" />
+    <disable_collisions link1="Mors_prismatic3_Link" link2="link_5" reason="Never" />
+    <disable_collisions link1="Mors_prismatic3_Link" link2="link_6" reason="Never" />
+    <disable_collisions link1="Mors_prismatic3_Link" link2="tool0" reason="Adjacent" />
+    <disable_collisions link1="base_link" link2="link_1" reason="Adjacent" />
+    <disable_collisions link1="base_link" link2="link_3" reason="Never" />
+    <disable_collisions link1="link_1" link2="link_2" reason="Adjacent" />
+    <disable_collisions link1="link_1" link2="link_3" reason="Never" />
+    <disable_collisions link1="link_2" link2="link_3" reason="Adjacent" />
+    <disable_collisions link1="link_2" link2="link_5" reason="Never" />
+    <disable_collisions link1="link_2" link2="link_6" reason="Never" />
+    <disable_collisions link1="link_3" link2="link_4" reason="Adjacent" />
+    <disable_collisions link1="link_3" link2="link_5" reason="Never" />
+    <disable_collisions link1="link_3" link2="link_6" reason="Never" />
+    <disable_collisions link1="link_3" link2="tool0" reason="Never" />
+    <disable_collisions link1="link_4" link2="link_5" reason="Adjacent" />
+    <disable_collisions link1="link_5" link2="link_6" reason="Adjacent" />
+    <disable_collisions link1="link_5" link2="tool0" reason="Never" />
+    <disable_collisions link1="link_6" link2="tool0" reason="Adjacent" />
+</robot>
