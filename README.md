@@ -1,5 +1,9 @@
 ## Needed Installations (this code has been tested on Ubuntu 16.04) : 
 
+#### See video of the simulation in here :
+
+https://www.youtube.com/watch?v=7sTgo5UZ8-M
+
 #### ROS & GAZEBO INSTALLATION
 
 - sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
